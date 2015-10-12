@@ -1,0 +1,18 @@
+# Site settings
+title: JSON Community
+email: comments@bigbluehat.com
+description: > # this means to ignore newlines until "baseurl:"
+  JSON.com is a collection of JSON related content, links, and general
+  awesomeness hand selected by the good people of the Web. The original
+  json.com site has been
+  <a href="http://web.archive.org/web/20150503020228/https://www.json.com/">
+  archived</a>.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: json-com
+github_username:  json-com
+
+# Build settings
+markdown: kramdown
+gems:
+  - jemoji
