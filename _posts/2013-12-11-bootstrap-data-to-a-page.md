@@ -15,7 +15,7 @@ author: Dave Romero
 
 layout: post
 redirect_from:
- - /json-tutorial/bootstrap-data-to-a-page
+ - /json-tutorial/bootstrap-data-to-a-page/
 ---
 
 What does ‘bootstrapping’ mean exactly? *Hard-coding your data to the

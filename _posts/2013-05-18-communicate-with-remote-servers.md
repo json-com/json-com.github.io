@@ -16,7 +16,7 @@ author: Phoenix Zerin
 
 layout: post
 redirect_from:
- - /json-tutorial/communicate-with-remote-servers
+ - /json-tutorial/communicate-with-remote-servers/
 ---
 
 When you need to send data back and forth with a RESTful webservice or
