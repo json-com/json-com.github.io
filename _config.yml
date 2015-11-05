@@ -16,3 +16,4 @@ github_username:  json-com
 markdown: kramdown
 gems:
   - jemoji
+  - jekyll-redirect-from

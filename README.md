@@ -8,7 +8,7 @@ Install [Jekyll](http://jekyllrb.com/).
 
 Then the emoji goodness. :smiley_cat:
 ```
-gem install jemoji
+gem install jemoji jekyll-redirect-from
 ```
 
 Then serve it up and watch it carefully:
