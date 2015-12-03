@@ -2,7 +2,6 @@
 layout: post
 title:  "Welcome to JSON.com!"
 date:   2015-10-12 09:05:33
-categories: jekyll update
 ---
 
 JSON.com has existed
