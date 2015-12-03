@@ -13,14 +13,31 @@ twitter_username: json-com
 github_username:  json-com
 paginate: 5
 
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-relative_permalinks: true
-
 # Build settings
 markdown: kramdown
 gems:
   - jemoji
   - jekyll-redirect-from
+  - jekyll-archives
+  - jekyll-paginate
+
+# Jekyll Archive Specific stuff
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - day
+    - tag
+    - category
+  layouts:
+    year: archive-year
+    month: archive-month
+    day: archive-day
+    tag: archive-tag
+    category: archive-category
+  permalinks:
+    year: '/archives/:year/'
+    month: '/archives/:year/:month/'
+    day: '/archives/:year/:month/:day/'
+    tag: '/archives/tag/:name/'
+    category: '/archives/category/:name/'
