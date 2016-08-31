@@ -2,6 +2,7 @@
 layout: post
 title:  "Welcome to JSON.com!"
 date:   2015-10-12 09:05:33
+author: BigBlueHat
 ---
 
 JSON.com has existed
@@ -11,7 +12,7 @@ It's changed hands a number of time looking for a sustainable home.
 [BigBlueHat](http://bigbluehat.com/) has most recently offered to curate a
 community via the collaborative awesome of GitHub.
 
-If you are interested in participating, please reach out via GitHub. Send in
+If you are interested in participating, please [reach out via GitHub](https://github.com/json-com/json-com.github.io/issues). Send in
 Pull Requests with openly licensed content, links, etc.
 
 Let's build this one to last. :wink:
