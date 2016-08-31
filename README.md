@@ -14,7 +14,7 @@ bundle install
 
 Then serve it up and watch it carefully:
 ```
-jekyll serve --watch
+bundle exec jekyll serve --watch
 ```
 
 ## License
