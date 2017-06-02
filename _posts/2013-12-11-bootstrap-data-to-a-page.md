@@ -19,7 +19,7 @@ redirect_from:
  - /json-tutorial/bootstrap-data-to-a-page/
 ---
 
-What does ‘bootstrapping’ mean exactly? *Hard-coding your data to the
+What does "bootstrapping" mean exactly? *Hard-coding your data to the
 page using synchronous server-side template.*
 
 Most developers face the challenge of sending data from their
@@ -40,40 +40,46 @@ with minimal development.
 
 It typically looks something like this on the server side:
 
-    <script type="text/javascript">
-    //bootstrapped data with server-side template
-    var bootstrap = {
-      "app_id": "{{app_id}}",
-      "session_id": "{{session_id}}",
-      "title": '{{title}}',
-      "price": "{{price}}",
-      "confirmation": "{{confirmation}}"
-    };
-    </script>
+```html
+<script type="text/javascript">
+//bootstrapped data with server-side template
+var bootstrap = {
+  "app_id": "{{app_id}}",
+  "session_id": "{{session_id}}",
+  "title": '{{title}}',
+  "price": "{{price}}",
+  "confirmation": "{{confirmation}}"
+};
+</script>
+```
 
 It looks like this when it’s rendered on the client side:
 
-    <script type="text/javascript">
-    //bootstrapped data rendered on client-side
-    var bootstrap = {
-      "app_id": "a1b2c3",
-      "session_id": "x0y9z8",
-      "title": "My Cool App",
-      "price": "1.99",
-      "confirmation": "Thanks for purchasing our app."
-    };
-    </script>
+```html
+<script type="text/javascript">
+//bootstrapped data rendered on client-side
+var bootstrap = {
+  "app_id": "a1b2c3",
+  "session_id": "x0y9z8",
+  "title": "My Cool App",
+  "price": "1.99",
+  "confirmation": "Thanks for purchasing our app."
+};
+</script>
+```
 
 This boostrapped JSON object can now be called with JavaScript
 immediately when the object is rendered by the browser:
 
-`console.log(bootstrap)`
-`{ "app_id": "a1b2c3", ... }`
+```js
+console.log(bootstrap)
+// { "app_id": "a1b2c3", ... }
 
-`console.log(bootstrap.title)`
-`My Cool App`
+console.log(bootstrap.title)
+// My Cool App
+```
 
-Note: it’s best to put the bootstrapped object near the top of the page
+Note: it's best to put the bootstrapped object near the top of the page
 so it can used immediately, even before remaining html/css/javascript is
 loaded.
 
@@ -85,7 +91,7 @@ to the `jQuery.ajax()` function. Any ajax request(s) retreiving data
 from a REST endpoint comes with additional load time expense.
 
 If your app depends on this data, synchronously loaded (aka
-‘bootstrapped’) JSON data will make your app snappy and your users
+"bootstrapped") JSON data will make your app snappy and your users
 happy. Not to mention, because of the server-side templating, REST
 endpoint security considerations are nullified.
 

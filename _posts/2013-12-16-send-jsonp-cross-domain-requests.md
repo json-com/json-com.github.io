@@ -51,27 +51,33 @@ interpreter.
 
 A typical JSONP request may look like:
 
-    <script type="application/javascript"
-      src="http://remote.domain.com/data/?callback=jsonpcallback&id=123">
-    </script>
+```html
+<script type="application/javascript"
+  src="http://remote.domain.com/data/?callback=jsonpcallback&id=123">
+</script>
+```
 
-The dynamicall generated JavaScript file may look like:
+The dynamically generated JavaScript file may look like:
 
-    jsonpcallback({
-      "id": "123",
-      "comments": "6",
-      "name": "sample"
-    });
+```js
+jsonpcallback({
+  "id": "123",
+  "comments": "6",
+  "name": "sample"
+});
+```
 
 The "padding" in JSONP refers to the function call that wraps the
 formatted JSON object. This padding isn't always a function call. Though
 not common, padding could also be a variable assignment:
 
-    var data = {
-      "id": "123",
-      "comments": "6",
-      "name": "sample"
-    };
+```js
+var data = {
+  "id": "123",
+  "comments": "6",
+  "name": "sample"
+};
+```
 
 The purpose of the padding is to allow a means for the formatted data to
 be put to use in the application.
@@ -85,38 +91,47 @@ snap.[jQuery's
 will automatically handle &lt;script&gt; tag injection and response
 handling (i.e. calling the 'callback' function).
 
-    $.ajax({
-      //JSONP API
-      url: "http://remote.domain.com/data/?callback=jsonpcallback&id=123",
-      //the name of the callback function
-      jsonp: "jsonpcallback",
-      //tell jQuery to expect JSONP
-      dataType: "jsonp",
-      //tell YQL what we want and that we want JSON
-      data: {
-        id: "123"
-      },
-      //work with the response
-      success: function(data) {
-        console.log(data); //formatted JSON data
-      }
-    });
+```js
+$.ajax({
+  //JSONP API
+  url: "http://remote.domain.com/data/?callback=jsonpcallback&id=123",
+  //the name of the callback function
+  jsonp: "jsonpcallback",
+  //tell jQuery to expect JSONP
+  dataType: "jsonp",
+  //tell YQL what we want and that we want JSON
+  data: {
+    id: "123"
+  },
+  //work with the response
+  success: function(data) {
+    console.log(data); //formatted JSON data
+  }
+});
+```
 
-`console.log(data);``{ "id": "123", "comments": "6", "name": "sample" }`
+```js
+console.log(data);
+```
+```json
+{ "id": "123", "comments": "6", "name": "sample" }
+```
 
 Alternatively, if jQuery is not available- which is often the case when
 developing embeddable widgets- raw JavaScript can be used. The following
 is minimal JSONP implementation:
 
-    //callback function
-    function jsonpcallback(data) {
-        //do stuff with JSON
-        console.log(data);
-    }
+```js
+//callback function
+function jsonpcallback(data) {
+  //do stuff with JSON
+  console.log(data);
+}
 
-    //create HTML script tag
-    var script = document.createElement('script');
-    script.src = "http://remote.domain.com/data/?callback=jsonpcallback&id=123"
+//create HTML script tag
+var script = document.createElement('script');
+script.src = "http://remote.domain.com/data/?callback=jsonpcallback&id=123"
 
-    //inject script tag into head
-    document.getElementsByTagName('head')[0].appendChild(script);
+//inject script tag into head
+document.getElementsByTagName('head')[0].appendChild(script);
+```
