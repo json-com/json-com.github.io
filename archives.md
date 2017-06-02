@@ -19,6 +19,7 @@ permalink: /archives/
       {% endunless %}
       <li>
       <a href="{{ post.url }}" class="noline">{{ post.title }}</a>
+      <span>by {{ post.author }}</span>
       {% if post.category %} from <span class="category"><a href="/search.html?category={{ post.category }}" class="noline">{{ post.category }}</a></span>{% endif %}
     </li>
     {% endfor %}
