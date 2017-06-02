@@ -8,7 +8,7 @@ summary: JSON is a attractive option for setting up a custom analytics data stor
 tags:
 - data
 - analytics
-date: 12-09-2013
+date: 2013-12-09
 author: Dave Romero
 ---
 

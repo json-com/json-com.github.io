@@ -11,6 +11,7 @@ summary: |
 tags:
  - rest
  - data
+date: 2013-12-11
 author: Dave Romero
 
 layout: post

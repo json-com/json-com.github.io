@@ -7,7 +7,7 @@ summary: 'We''ve all been there before:  You finished putting together an awesom
   and now to wire up all the different configuration values:'
 tags:
 - functions
-date: 5-19-2013
+date: 2013-05-19
 author: Phoenix Zerin
 ---
 We've all been there before:  You finished putting together an awesome class or function whose behavior can be configured down to the smallest degree, and now to wire up all the different configuration values:

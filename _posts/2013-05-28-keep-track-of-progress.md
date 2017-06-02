@@ -10,7 +10,7 @@ summary: Let's pretend that you are tasked with writing a one-off script to proc
   and come up with an efficient way to deal with it.
 tags:
 - files
-date: 5-28-2013
+date: 2013-05-28
 author: Phoenix Zerin
 ---
 

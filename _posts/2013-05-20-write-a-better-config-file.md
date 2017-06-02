@@ -8,7 +8,7 @@ summary: Anyone who's been writing applications for awhile has run into the prob
   values that live outside the codebase.
 tags:
 - config
-date: 5-20-2013
+date: 2013-05-20
 author: Phoenix Zerin
 ---
 

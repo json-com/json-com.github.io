@@ -11,7 +11,7 @@ summary: Can you remember the last time you came across a data visualization lib
 tags:
 - data
 - visualization
-date: 5-15-2013
+date: 2013-05-15
 author: Dave Romero
 ---
 

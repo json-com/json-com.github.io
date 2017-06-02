@@ -10,7 +10,7 @@ summary: The use of nested JSON object often allows developers to break out of t
   have existed in a relational data schema.
 tags:
 - nesting
-date: 12-10-2013
+date: 2013-12-10
 author: Dave Romero
 ---
 

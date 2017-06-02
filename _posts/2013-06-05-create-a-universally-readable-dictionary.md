@@ -7,6 +7,7 @@ summary: |
   You ever need to create a dictionary? Of course you do!  Heck, I do it all the time! Oh, stop looking at me like that.  I don't just mean language dictionaries!  Address books, blogrolls, bibliographies, calendar events grouped by date... anywhere you have a list of words/phrases/terms/names/etc. and their corresponding definitions/explanations/details/etc., you've got a dictionary.
 tags:
  - data
+date: 2013-06-05
 author: Phoenix Zerin
 redirect_from:
  - /json-tutorial/create-a-universally-readable-dictionary/

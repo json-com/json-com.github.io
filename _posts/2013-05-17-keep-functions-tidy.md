@@ -6,7 +6,7 @@ summary: 'When you want to keep your functions out of the global namespace, use 
   like this:'
 tags:
 - functions
-date: 5-17-2013
+date: 2013-05-17
 author: Dave Romero
 ---
 
@@ -30,4 +30,6 @@ console.log( nameSpace.myFunc(1, 2) );
 // returns 3
 ```
 
-Another advantage you have of declaring functions in an object literal is gaining access to the ‚Äúthis‚Äù variable within each method.  In the example above, `this`ù refers to `nameSpace`ù object.  It can be referred to easily in this manner without declaring any functions in the global namespace.  Handy indeed.
+Another advantage you have of declaring functions in an object literal is
+gaining access to the `this` variable within each method.  In the example
+above, `this` refers to `nameSpace` object.  It can be referred to easily in this manner without declaring any functions in the global namespace.  Handy indeed.

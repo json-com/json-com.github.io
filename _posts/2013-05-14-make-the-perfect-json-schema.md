@@ -6,11 +6,11 @@ summary: Schemas in JSON are unlimited in breadth and depth. With support for ne
   arrays and objects, JSON can be used to create flexible schemas which help store
   and transport data in a way that bests suits the needs of an application. When the
   architecture of an application changes (as do the data transport and data storage
-  needs), it’s convenient to use a flexible format that isn't restrained by a two-dimensional,
+  needs), it's convenient to use a flexible format that isn't restrained by a two-dimensional,
   table-oriented paradigm
 tags:
 - schema
-date: 5-14-2013
+date: 2013-05-14
 author: Dave Romero
 ---
 

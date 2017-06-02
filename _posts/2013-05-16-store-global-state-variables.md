@@ -9,7 +9,7 @@ summary: 'Ever build a JavaScript app and find there are certain variables you n
   to another, effectively pushing them down a daisy-chain as needed. '
 tags:
 - variables
-date: 5-16-2013
+date: 2013-05-16
 author: Dave Romero
 ---
 
