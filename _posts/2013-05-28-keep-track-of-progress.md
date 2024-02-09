@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Keep Track of Progress
 metaDesc: Periodically save your progress to a file so that your program knows exactly
   where to leave off in the event of a crash.

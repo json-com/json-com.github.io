@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Make the Perfect JSON Schema
 metaDesc: Schemas in JSON are unlimited in breadth and depth. With support for nested
   arrays and objects, JSON can be used to create flexible schemas.

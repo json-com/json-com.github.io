@@ -1,0 +1,24 @@
+---
+# from https://github.com/ludens/Jekyll/blob/gh-pages/archive.html
+layout: page
+title: Archives
+permalink: /archives/
+---
+
+<div class="archive" id="home">
+  <ul>
+    {% for post in collections.posts reversed %}
+      {% capture current_year_month %}{{ post.page.date | date: '%Y' }}-{{ post.page.date | date: '%-m' }}{% endcapture %}
+      {% if current_year_month != previous_year_month %}
+        <h3>{{ post.page.date | date: '%Y' }}-{{ post.page.date | date: '%-m' }}</h3>
+      {% endif %}
+
+      <li>
+      <a href="{{ post.page.url }}" class="noline">{{ post.data.title }}</a>
+      <span>by {{ post.data.author }}</span>
+      {% if post.category %} from <span class="category"><a href="/search.html?category={{ post.data.category }}" class="noline">{{ post.category }}</a></span>{% endif %}
+      {% capture previous_year_month %}{{ current_year_month }}{% endcapture %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

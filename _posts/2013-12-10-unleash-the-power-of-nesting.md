@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Unleash the Power of Nesting
 metaDesc: JSON objects often allow developers to break out of the common relational
   data schemas employed in databases like MySQL and MSSQL.

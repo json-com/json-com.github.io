@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Visualize JSON-formatted Data
 metaDesc: Can you remember the last time you came across a data visualization library
   that didn't use JSON as the primary input?

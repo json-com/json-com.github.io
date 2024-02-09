@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Keep Function Parameters Tidy
 metaDesc: 'We''ve all been there before:  You finished putting together an awesome
   class or function whose behavior can be configured down to the smallest degree...'

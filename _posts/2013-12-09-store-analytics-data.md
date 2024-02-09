@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Store Analytics Data
 metaDesc: The utility and flexibility of the JSON format is clear when persisting
   analytics data to an object database (a database that stores native JSON)

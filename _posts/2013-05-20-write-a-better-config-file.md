@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Write a Better Config File
 metaDesc: Anyone who's been writing applications for awhile has run into the problem
   of making the application's behavior configurable in different operating environments.

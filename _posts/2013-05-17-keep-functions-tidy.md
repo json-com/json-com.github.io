@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Keep Functions Tidy
 metaDesc: When you want to keep your functions out of the global namespace, use JSON.
 summary: 'When you want to keep your functions out of the global namespace, use JSON.  A

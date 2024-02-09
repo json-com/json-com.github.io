@@ -1,0 +1,26 @@
+{
+  "name": "json.com",
+  "version": "0.0.0",
+  "description": "json.com website & developer documentation site for all things JSON.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "rm -rf _site/ && eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JSON",
+    "Documentation"
+  ],
+  "author": "BigBlueHat <byoung@bigbluehat.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@kevingimbel/eleventy-plugin-mermaid": "^2.1.0"
+  },
+  "dependencies": {
+    "eleventy-plugin-blog-tools": "bigbluehat/eleventy-plugin-blog-tools",
+    "markdown-it-anchor": "^8.6.7",
+    "sass": "^1.66.0"
+  }
+}

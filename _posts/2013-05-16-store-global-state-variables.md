@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Store Global State Variables
 metaDesc: Ever build a JavaScript app and find there are certain variables you need
   to access in various places throughout the code?
