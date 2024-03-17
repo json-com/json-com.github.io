@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/05/20/write-a-better-config-file">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Write a Better Config File</h1>
+  <span class="post-date">20 May 2013</span>
+  <p>Anyone who's been writing applications for awhile has run into the problem of making the application's behavior configurable in different operating environments.  From DSNs to administrator email addresses, it's important to have a set of configuration values that live outside the codebase.</p>
+<p>But how to store these values in a format that a computer can easily read and write?</p>
+<p>A lot of solutions have been tried over the years, including INI, XML and YAML.  Each of these formats has its strengths, but they all lack the combination of power and simplicity that JSON offers.</p>
+<p>Consider a configuration file that stores database connection strings for different operating modes.  Let's start by seeing how you might write it with INI syntax:</p>
+<pre class="language-ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">prod</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">sql_username</span>   <span class="token punctuation">=</span> <span class="token value attr-value">dbuser</span>
+<span class="token key attr-name">sql_password</span>   <span class="token punctuation">=</span> <span class="token value attr-value">dbpass</span>
+<span class="token key attr-name">sql_hostname</span>   <span class="token punctuation">=</span> <span class="token value attr-value">192.168.113.172</span>
+<span class="token key attr-name">sql_portnum</span>    <span class="token punctuation">=</span> <span class="token value attr-value">3306</span>
+<span class="token key attr-name">sql_database</span>   <span class="token punctuation">=</span> <span class="token value attr-value">app_database</span>
+<span class="token key attr-name">redis_hostname</span> <span class="token punctuation">=</span> <span class="token value attr-value">192.168.113.173</span>
+<span class="token key attr-name">redis_portnum</span>  <span class="token punctuation">=</span> <span class="token value attr-value">6379</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">test</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">sql_username</span>   <span class="token punctuation">=</span> <span class="token value attr-value">dbuser</span>
+<span class="token key attr-name">sql_password</span>   <span class="token punctuation">=</span> <span class="token value attr-value">dbpass</span>
+<span class="token key attr-name">sql_hostname</span>   <span class="token punctuation">=</span> <span class="token value attr-value">192.168.113.172</span>
+<span class="token key attr-name">sql_portnum</span>    <span class="token punctuation">=</span> <span class="token value attr-value">3306</span>
+<span class="token key attr-name">sql_database</span>   <span class="token punctuation">=</span> <span class="token value attr-value">test_app_database</span>
+<span class="token key attr-name">redis_hostname</span> <span class="token punctuation">=</span> <span class="token value attr-value">192.168.113.175</span>
+<span class="token key attr-name">redis_portnum</span>  <span class="token punctuation">=</span> <span class="token value attr-value">6379</span></code></pre>
+<p>Well, it gets the job done, but it's kind of... verbose.  Plus, if that config file gets long enough, it will get really difficult to separate the different sections (prod, test, etc.).</p>
+<p>What about an XML config file?</p>
+<pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">configurations</span> <span class="token name">SYSTEM</span> <span class="token string">"path/to/config.dtd"</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configurations</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span> <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prod<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sql<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>dbuser<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>dbpass<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+      ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redis<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hostname<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inet_addr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>192.168.113.173<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>portnum<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>integer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>6379<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span> <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configurations</span><span class="token punctuation">></span></span></code></pre>
+<p>Yuck — and I thought INI was verbose!  I didn't even want to type the entire thing out, it got so huge!  And by the way, good luck trying to store array values!</p>
+<p>How about YAML?</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
+<span class="token key atrule">prod</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sql</span><span class="token punctuation">:</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> dbuser
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> dbpass
+    <span class="token punctuation">...</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span>  192.168.113.173
+    <span class="token key atrule">portnum</span><span class="token punctuation">:</span>   <span class="token number">6379</span>
+
+<span class="token key atrule">test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sql</span><span class="token punctuation">:</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> dbuser
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> dbpass
+    <span class="token punctuation">...</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span>  192.168.113.175
+    <span class="token key atrule">portnum</span><span class="token punctuation">:</span>   <span class="token number">6379</span></code></pre>
+<p>Not bad.  Definitely easy for a human to read, and there are libraries in practically every programming language to read and write YAML files.  But I'll share with you a little secret:  YAML is JSON-compatible!</p>
+<p>That's right; the above configuration file could also be written like this:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
+<span class="token key atrule">prod</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sql</span><span class="token punctuation">:</span>   <span class="token punctuation">{</span><span class="token key atrule">"username"</span><span class="token punctuation">:</span> <span class="token string">"dbuser"</span><span class="token punctuation">,</span> <span class="token key atrule">"password"</span><span class="token punctuation">:</span> <span class="token string">"dbpass"</span><span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">}</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token key atrule">"hostname"</span><span class="token punctuation">:</span> <span class="token string">"192.168.113.173"</span><span class="token punctuation">,</span> <span class="token key atrule">"portnum"</span><span class="token punctuation">:</span> <span class="token number">6379</span><span class="token punctuation">}</span>
+<span class="token key atrule">test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sql</span><span class="token punctuation">:</span>   <span class="token punctuation">{</span><span class="token key atrule">"username"</span><span class="token punctuation">:</span> <span class="token string">"dbuser"</span><span class="token punctuation">,</span> <span class="token key atrule">"password"</span><span class="token punctuation">:</span> <span class="token string">"dbpass"</span><span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">}</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token key atrule">"hostname"</span><span class="token punctuation">:</span> <span class="token string">"192.168.113.175"</span><span class="token punctuation">,</span> <span class="token key atrule">"portnum"</span><span class="token punctuation">:</span> <span class="token number">6379</span><span class="token punctuation">}</span>
+p Well<span class="token punctuation">,</span> if you're going to go and use a configuration file format that's compatible with JSON<span class="token punctuation">...</span> why not use JSON<span class="token punctuation">?</span>
+pre.
+<span class="token punctuation">{</span>
+  <span class="token key atrule">"prod"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token key atrule">"sql"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token key atrule">"username"</span><span class="token punctuation">:</span> <span class="token string">"dbuser"</span><span class="token punctuation">,</span>
+      <span class="token key atrule">"password"</span><span class="token punctuation">:</span> <span class="token string">"dbpass"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token key atrule">"redis"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token key atrule">"hostname"</span><span class="token punctuation">:</span> <span class="token string">"192.168.113.173"</span><span class="token punctuation">,</span>
+      <span class="token key atrule">"portnum"</span><span class="token punctuation">:</span>  <span class="token number">6379</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+  <span class="token key atrule">"test"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Not only do you get an easy to read syntax (for both humans and computers), but you also get the advantage of being able to explicitly supply a type for your configuration values.</p>
+<p>Try to set a configuration value to null in an INI or YAML file (credit where it's due, at least XML can handle this... if you don't mind typing a dozen extra characters!).</p>
+<p>What about true or false?  In JSON, this is just part of the syntax:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"prod"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"use_caching"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"test"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"use_caching"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>And with JSON libraries available in nearly every programming language (or supported natively if you are developing a Node.js app!), it's incredibly easy to integrate a JSON configuration into your application!</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+      <li>
+        <h3>
+          <a href="/2013/05/21/get-more-bang-for-your-relational-buck">
+            Get More Bang for Your Relational Buck
+            <small>21 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

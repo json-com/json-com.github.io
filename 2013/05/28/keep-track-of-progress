@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/05/28/keep-track-of-progress">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Keep Track of Progress</h1>
+  <span class="post-date">28 May 2013</span>
+  <p>Let's pretend that you are tasked with writing a one-off script to process a massive amount of backlogged data (a few of you might not have to pretend very hard).  Because this script is ultimately going to be run once and then discarded, it would be a waste to spend lots of time building error handling routines and making the process super robust — it would be far less expensive just to expect failure and come up with an efficient way to deal with it.</p>
+<p>And if there's one thing you can count on, it's failure.  Servers will go offline, files will disappear, hamsters will chew through the power cables... one way or another, you're going to run into a situation where a script or job that you've written will not be able to complete its task successfully.</p>
+<p>And then what?</p>
+<p>Well, you've got two options:</p>
+<ol>
+<li>Clear out all the partially-processed data (assuming that's even possible!), run the job again and hope extra hard that it works this time!</li>
+<li>Periodically save your progress to a file so that your program knows exactly where to leave off in the event of a crash.</li>
+</ol>
+<p>I don't know about you, but I am rather partial to option #2.</p>
+<p>For the purposes of this example, let's say that you manage a website with a huge number of hosted image files (<a href="http://creativecommons.org/licenses/by-sa/3.0/">cc-by-sa</a>, of course).  One day, you noticed that other website owners are using your images without properly crediting your site.  I know that barely ever happens in real life, but bear with me here.
+p So you've gotta write a script that does two things:</p>
+<ol>
+<li>Submit each photo to a reverse image search API to locate unauthorized uses of the image and log the offending websites to a file for later follow-up.</li>
+<li>Apply a watermark to each image so that future content copiers will attribute the images correctly whether they want to or not.</li>
+</ol>
+<p>Step 1 could potentially take awhile, and there are a lot of opportunities for something to get screwed up somewhere along the line.  Network outages, connection timeouts, the remote server sends back a 503 — there are a lot of ways this process could fail.</p>
+<p>Even the watermarking process could go boom.  A corrupted or oddly-formatted image might cause the image processor to crash.</p>
+<p>Since you can't spend hours and hours making your script fail-proof, you'll have to find a way to keep track of your script's progress so that in the event that something does break, the program can recover gracefully (and something <strong>will</strong> break – usually right after you go home for the evening, wasting an entire night's worth of processing time).</p>
+<p>JSON to the rescue!  Yeah, I bet you were wondering when I'd get to the point already.</p>
+<p>Imagine you started off with a <code>status.json</code> file that looked something like this:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"img_1856322"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"search"</span><span class="token operator">:</span>     <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"watermark"</span><span class="token operator">:</span>  <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"img_1856323"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"search"</span><span class="token operator">:</span>     <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"watermark"</span><span class="token operator">:</span>  <span class="token boolean">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ... and so on ...
+<span class="token punctuation">}</span></code></pre>
+<p>How this file was generated is outside the scope of this article, but given that you've made it this far, I bet you've already thought of at least 3 devilishly clever ways to do it.</p>
+<p>When your script starts up, it reads the JSON object from the status file and starts traversing it, looking for tasks that haven't been completed yet.  As it finishes each step, it updates the object with the results (and don't forget to write the JSON back to <code>status.json</code> each time it is updated so that you don't lose your status in the event that the entire script gets crash-y!).</p>
+<p>After awhile, <code>status.json</code> starts to show signs of life (explanatory comments added):</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"img_1856322"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"search"</span><span class="token operator">:</span>     <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>   <span class="token comment">// Oh good; nobody's using this image!  It's mine!  All mine!!</span>
+    <span class="token property">"watermark"</span><span class="token operator">:</span>  <span class="token boolean">true</span>  <span class="token comment">// Watermark completed successfully (:</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"img_1856323"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"search"</span><span class="token operator">:</span>     <span class="token punctuation">[</span><span class="token string">"http://www.istealimages.com/buy_my_poster/totally_legit.jpg"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token comment">// Somebody is abusing our image!  Release the hounds!</span>
+    <span class="token property">"watermark"</span><span class="token operator">:</span>  <span class="token punctuation">[</span><span class="token string">"DivideByZeroError"</span><span class="token punctuation">,</span> <span class="token string">"Unexpected divide by zero in region 42."</span><span class="token punctuation">]</span>  <span class="token comment">// Oops; something went wrong during the watermarking!  Wait... *unexpected* divide by zero?</span>
+  <span class="token punctuation">}</span>
+  ... you get the idea ...
+<span class="token punctuation">}</span></code></pre>
+<p>Notice something else cool about <code>status.json</code>?  It doubles as a log file once the script is finished running!  Not only do you have a lean placemarker file for your script, but it's also in a format that's easy for a human to scan through.</p>
+<p>For really complex jobs or periodic tasks, you will probably find that it is worth the time to integrate a fully-featured job manager and spend the extra effort tuning your script for robustness.  But when you have a one-off task to crunch through, consider using a JSON-formatted status file so that both you and your script can keep a handle on things.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

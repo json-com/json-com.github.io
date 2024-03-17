@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/05/19/keep-function-parameters-tidy">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Keep Function Parameters Tidy</h1>
+  <span class="post-date">19 May 2013</span>
+  <p>We've all been there before:  You finished putting together an awesome class or function whose behavior can be configured down to the smallest degree, and now to wire up all the different configuration values:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">jsonapi</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> data<span class="token punctuation">,</span> pre_execute_hook<span class="token punctuation">,</span> success_hook<span class="token punctuation">,</span> failure_hook<span class="token punctuation">,</span> error_hook<span class="token punctuation">,</span> post_execute_hook<span class="token punctuation">,</span> async<span class="token punctuation">,</span> method<span class="token punctuation">,</span> jsonp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>What a mess.  Can you imagine trying to call that monstrosity?</p>
+<pre class="language-js"><code class="language-js"><span class="token function">jsonapi</span><span class="token punctuation">(</span><span class="token string">'http://www.example.com/rest/doSomethingAwesome'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">"subscribe"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"peter"</span><span class="token punctuation">,</span> <span class="token string">"henrietta"</span><span class="token punctuation">,</span> <span class="token string">"xavier"</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> mySuccessHandler<span class="token punctuation">,</span> myFailureHandler<span class="token punctuation">,</span> myErrorHandler<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>At least you have some job security — nobody is going to want to maintain that thing!</p>
+<p>However, there's a better way to organize your function parameters using JSON:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">jsonapi</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Merge options with default values.</span>
+  options <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// Standard Options</span>
+      <span class="token string-property property">'url'</span><span class="token operator">:</span>          <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token comment">// Hooks</span>
+      <span class="token string-property property">'pre_execute'</span><span class="token operator">:</span>  <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'success'</span><span class="token operator">:</span>      <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'failure'</span><span class="token operator">:</span>      <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'error'</span><span class="token operator">:</span>        <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'post_execute'</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token comment">// Advanced Options</span>
+      <span class="token string-property property">'async'</span><span class="token operator">:</span>        <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'method'</span><span class="token operator">:</span>       <span class="token string">'post'</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'jsonp'</span><span class="token operator">:</span>        <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">'data'</span><span class="token operator">:</span>         <span class="token keyword">null</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>options <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that we are using the extend() function from the jQuery library to merge values in the options parameter.</p>
+<p>When you are invoking the function, pass a JSON-encoded object as the value of the options parameter:</p>
+<pre class="language-js"><code class="language-js"><span class="token function">jsonapi</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"url"</span><span class="token operator">:</span>      <span class="token string">'http://www.example.com/rest/doSomethingAwesome'</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span>     <span class="token punctuation">{</span><span class="token string-property property">"subscribe"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"peter"</span><span class="token punctuation">,</span> <span class="token string">"henrietta"</span><span class="token punctuation">,</span> <span class="token string">"xavier"</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"success"</span><span class="token operator">:</span>  mySuccessHandler<span class="token punctuation">,</span>
+  <span class="token string-property property">"failure"</span><span class="token operator">:</span>  myFailureHandler<span class="token punctuation">,</span>
+  <span class="token string-property property">"error"</span><span class="token operator">:</span>    myErrorHandler<span class="token punctuation">,</span> 
+  <span class="token string-property property">"jsonp"</span><span class="token operator">:</span>    <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>You might have noticed several advantages to this method:</p>
+<ul>
+<li>The values you are passing at invocation time are self-documenting — even without looking at the function signature, you can tell which option each value corresponds to.</li>
+<li>You can omit any options that should use the default value — in the above example, the we did not have to pass a null value to the pre_execute, post_execute, method and async options; the function automatically uses default values if they are omitted from the JSON object passed to it.</li>
+<li>Individual options can be documented in the function body itself.
+p One thing to be careful about though, is that the different options are no longer part of the function's signature, so IDE tooltips and auto-completion won't work.  Make sure you document well your functions and the options they expect if you are using this technique!</li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+      <li>
+        <h3>
+          <a href="/2013/05/17/keep-functions-tidy">
+            Keep Functions Tidy
+            <small>17 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

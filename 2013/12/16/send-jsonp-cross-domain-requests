@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/12/16/send-jsonp-cross-domain-requests">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Send JSONP Cross-domain Requests</h1>
+  <span class="post-date">16 Dec 2013</span>
+  <h2 id="cross-domain-requests" tabindex="-1">Cross-domain Requests</h2>
+<p>In developing web applications it's commonplace to send and receive data
+to APIs (Application Programmable Interfaces) that exist on other
+domains. This cross-domain communication is often performed directly in
+the browser, on the client-side using JavaScript. Cross-domain
+communication can be accomplished using a server-side languages like
+Python, Nodejs, PHP, etc., however for cases where responses from
+cross-domain requests are utilized in the browser, JavaScript can save
+time and simplify development. Addintionaly, JavaScript requests are
+asynchronous— meaning they can be run in parallel with other processes.
+For example, JavaScript requests to other domains can be processed
+asynchronously while the page is still loading.</p>
+<h2 id="same-origin-policy" tabindex="-1">Same-origin Policy</h2>
+<p>Same-origin policy is an important security concept in client-side
+programming languages including JavaScript. This policy is observed by
+all web browsers and limits scripts running on a site to only sending
+requests with the same site. Browers use a combination of port number
+(e.g. 80) and hostname (e.g. <a href="http://my.domain.com">my.domain.com</a>) to determine the scope of
+the 'site'. There are however exceptions to the same-origin policy,
+including using the HTML &lt;script&gt; tag to retreive a dynamically
+generated JavaScript file from an external site. The most prominent of
+method of exploiting this exception is JSONP.</p>
+<h2 id="json-with-padding-(jsonp)" tabindex="-1">JSON with Padding (JSONP)</h2>
+<p>JSONP uses the &lt;script&gt; tag to retreive remote JavaScript code
+containing formatted JSON data with a function call wrapped around it.
+The data is not parsed, rather it is evaluated by the JavaScript
+interpreter.</p>
+<p>A typical JSONP request may look like:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>application/javascript<span class="token punctuation">"</span></span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://remote.domain.com/data/?callback=jsonpcallback&amp;id=123<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p>The dynamically generated JavaScript file may look like:</p>
+<pre class="language-js"><code class="language-js"><span class="token function">jsonpcallback</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"comments"</span><span class="token operator">:</span> <span class="token string">"6"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"sample"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The &quot;padding&quot; in JSONP refers to the function call that wraps the
+formatted JSON object. This padding isn't always a function call. Though
+not common, padding could also be a variable assignment:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"comments"</span><span class="token operator">:</span> <span class="token string">"6"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"sample"</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>The purpose of the padding is to allow a means for the formatted data to
+be put to use in the application.</p>
+<h2 id="jquery-for-jsonp" tabindex="-1">jQuery for JSONP</h2>
+<p>The jQuery JavaScript library has functions to make using JSONP a
+snap.<a href="http://learn.jquery.com/ajax/working-with-jsonp/">jQuery's
+$.ajax()</a> function
+will automatically handle &lt;script&gt; tag injection and response
+handling (i.e. calling the 'callback' function).</p>
+<pre class="language-js"><code class="language-js">$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">//JSONP API</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"http://remote.domain.com/data/?callback=jsonpcallback&amp;id=123"</span><span class="token punctuation">,</span>
+  <span class="token comment">//the name of the callback function</span>
+  <span class="token literal-property property">jsonp</span><span class="token operator">:</span> <span class="token string">"jsonpcallback"</span><span class="token punctuation">,</span>
+  <span class="token comment">//tell jQuery to expect JSONP</span>
+  <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"jsonp"</span><span class="token punctuation">,</span>
+  <span class="token comment">//tell YQL what we want and that we want JSON</span>
+  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">"123"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">//work with the response</span>
+  <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//formatted JSON data</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span> <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"6"</span><span class="token punctuation">,</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"sample"</span> <span class="token punctuation">}</span></code></pre>
+<p>Alternatively, if jQuery is not available- which is often the case when
+developing embeddable widgets- raw JavaScript can be used. The following
+is minimal JSONP implementation:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">//callback function</span>
+<span class="token keyword">function</span> <span class="token function">jsonpcallback</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//do stuff with JSON</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//create HTML script tag</span>
+<span class="token keyword">var</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">"http://remote.domain.com/data/?callback=jsonpcallback&amp;id=123"</span>
+
+<span class="token comment">//inject script tag into head</span>
+document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'head'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+      <li>
+        <h3>
+          <a href="/2013/05/15/visualize-json-formated-date">
+            Visualize JSON-formatted Data
+            <small>15 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/05/18/communicate-with-remote-servers">
+            Communicate with Remote Servers
+            <small>18 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/06/05/create-a-universally-readable-dictionary">
+            Create a Universally-Readable Dictionary
+            <small>05 Jun 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/09/store-analytics-data">
+            Store Analytics Data
+            <small>09 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/11/bootstrap-data-to-a-page">
+            Bootstrap Data to a Page
+            <small>11 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

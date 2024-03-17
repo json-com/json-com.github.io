@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/12/11/bootstrap-data-to-a-page">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Bootstrap Data to a Page</h1>
+  <span class="post-date">11 Dec 2013</span>
+  <p>What does &quot;bootstrapping&quot; mean exactly? <em>Hard-coding your data to the
+page using synchronous server-side template.</em></p>
+<p>Most developers face the challenge of sending data from their
+server-side to the client-side to be used JavaScript. There are several
+solutions for this. Among the most common is creating an REST endpoint
+that can be consumed with asynchronous javascript, often using the
+<a href="http://api.jquery.com/jQuery.ajax/" title="jQuery Ajax">jQuery Ajax</a> function.</p>
+<ul>
+<li>How is page load time affected when loading data asynchronously?
+Does the user’s experience depend directly on this data?</li>
+<li>Is there unecessary overhead creating an REST endpoint?</li>
+<li>Does the REST endpoint need to be secure? Authenticated? CSRF
+Tokenized?</li>
+</ul>
+<p>Depending on the answers to these questions, bootstrapping may be an
+elegant solution for getting the data to the client-side quickly and
+with minimal development.</p>
+<p>It typically looks something like this on the server side:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token comment">//bootstrapped data with server-side template</span>
+<span class="token keyword">var</span> bootstrap <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">"app_id"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"session_id"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"title"</span><span class="token operator">:</span> <span class="token string">'Bootstrap Data to a Page'</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"price"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"confirmation"</span><span class="token operator">:</span> <span class="token string">""</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p>It looks like this when it’s rendered on the client side:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token comment">//bootstrapped data rendered on client-side</span>
+<span class="token keyword">var</span> bootstrap <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">"app_id"</span><span class="token operator">:</span> <span class="token string">"a1b2c3"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"session_id"</span><span class="token operator">:</span> <span class="token string">"x0y9z8"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"title"</span><span class="token operator">:</span> <span class="token string">"My Cool App"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"price"</span><span class="token operator">:</span> <span class="token string">"1.99"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"confirmation"</span><span class="token operator">:</span> <span class="token string">"Thanks for purchasing our app."</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p>This boostrapped JSON object can now be called with JavaScript
+immediately when the object is rendered by the browser:</p>
+<pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bootstrap<span class="token punctuation">)</span>
+<span class="token comment">// { "app_id": "a1b2c3", ... }</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bootstrap<span class="token punctuation">.</span>title<span class="token punctuation">)</span>
+<span class="token comment">// My Cool App</span></code></pre>
+<p>Note: it's best to put the bootstrapped object near the top of the page
+so it can used immediately, even before remaining html/css/javascript is
+loaded.</p>
+<p>The key benefit of the bootstrapped object comes in the time saved when
+not having to use asynchronous JavaScript to call data from a REST
+endpoint. If you typically use jQuery Ajax to do this, 100-500
+milliseconds of prerequsite load time would be added just to gain access
+to the <code>jQuery.ajax()</code> function. Any ajax request(s) retreiving data
+from a REST endpoint comes with additional load time expense.</p>
+<p>If your app depends on this data, synchronously loaded (aka
+&quot;bootstrapped&quot;) JSON data will make your app snappy and your users
+happy. Not to mention, because of the server-side templating, REST
+endpoint security considerations are nullified.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+      <li>
+        <h3>
+          <a href="/2013/05/15/visualize-json-formated-date">
+            Visualize JSON-formatted Data
+            <small>15 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/05/18/communicate-with-remote-servers">
+            Communicate with Remote Servers
+            <small>18 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/06/05/create-a-universally-readable-dictionary">
+            Create a Universally-Readable Dictionary
+            <small>05 Jun 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/09/store-analytics-data">
+            Store Analytics Data
+            <small>09 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/16/send-jsonp-cross-domain-requests">
+            Send JSONP Cross-domain Requests
+            <small>16 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

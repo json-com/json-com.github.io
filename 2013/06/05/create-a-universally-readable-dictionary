@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <link href="https://github.com/json-com/json-com.github.io/edit/master/" rel="edit-form" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>JSON Community</title>
+  <meta name="description" content="JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has ...">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="canonical" href="/2013/06/05/create-a-universally-readable-dictionary">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- Atom & RSS -->
+  <link rel="alternate" type="application/atom+xml" title="JSON Community" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="JSON Community" href="/feed.xml" />
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/public/apple-touch-icon-precomposed.png" />
+    <p>JSON.com is a collection of JSON related content, links, and general awesomeness hand selected by the good people of the Web. The original json.com site has been <a href="http://web.archive.org/web/20150503020228/https://www.json.com/"> archived</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <a class="sidebar-nav-item" href="/archives/">Archives</a>
+    <a class="sidebar-nav-item" href="/specs/">Specifications</a>
+
+    
+      <a class="sidebar-nav-item" href="https://github.com/json-com">
+        <span class="icon icon--github">
+          <svg viewBox="0 0 16 16" width="1em" height="1em" style="vertical-align: middle">
+            <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+          </svg>
+        </span>
+
+        <span class="username">json-com</span>
+      </a>
+    
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2024. Apache License 2.0.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">JSON Community</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        
+<div class="post">
+  <h1 class="post-title">Create a Universally-Readable Dictionary</h1>
+  <span class="post-date">05 Jun 2013</span>
+  <p>You ever need to create a dictionary?</p>
+<p>Of course you do! Heck, I do it all the time!</p>
+<p>Oh, stop looking at me like that. I don't just mean language
+dictionaries! Address books, blogrolls, bibliographies, calendar events
+grouped by date... anywhere you have a list of
+words/phrases/terms/names/etc. and their corresponding
+definitions/explanations/details/etc., you've got a dictionary.</p>
+<p>For example, suppose you wanted to create a list of tourist attractions
+in your favorite city:</p>
+<p>Cerro San Cristóbal: A really big hill on the north side of town.
+La Vega:             Awesome place to buy veggies.
+Patio Bellavista:    Great nightlife and dining.</p>
+<p>I'm going to go ahead and take the liberty of assuming that your
+favorite city is Santiago de Chile, but if this is completely
+unacceptable to you, feel free to follow along with your own list.</p>
+<p>Not too shabby. Now, let's tweak it a little bit by putting everything
+in quotes:</p>
+<p>&quot;Cerro San Cristóbal&quot;: &quot;A really big hill on the north side of Santiago.&quot;
+&quot;La Vega&quot;:             &quot;Awesome place to buy veggies.&quot;
+&quot;Patio Bellavista&quot;:    &quot;Great nightlife and dining.&quot;</p>
+<p>And just so that it's clear where each entry in the list ends, we'll add
+a comma at the end:</p>
+<p>&quot;Cerro San Cristóbal&quot;: &quot;A really big hill on the north side of Santiago.&quot;,
+&quot;La Vega&quot;:             &quot;Awesome place to buy veggies.&quot;,
+&quot;Patio Bellavista&quot;:    &quot;Great nightlife and dining.&quot;</p>
+<p>And for good measure, let's decorate it with some curly braces because
+they're just so goshdarned pretty:</p>
+<p>{
+&quot;Cerro San Cristóbal&quot;: &quot;A really big hill on the north side of Santiago.&quot;,
+&quot;La Vega&quot;:             &quot;Awesome place to buy veggies.&quot;,
+&quot;Patio Bellavista&quot;:    &quot;Great nightlife and dining.&quot;
+}</p>
+<p>Well, would you look at that — we now have ourselves a
+properly-formatted JSON object! Not only is it still perfectly readable
+by humans, but you can now feed it into a script in just about any
+language.</p>
+<p>And since most JSON readers don't mind a little whitespace, you can make
+it even prettier:</p>
+<p>{
+&quot;Cerro San Cristóbal&quot;:
+&quot;A really big hill on the north side of Santiago.&quot;,</p>
+<p>&quot;La Vega&quot;:
+&quot;Awesome place to buy veggies.&quot;,</p>
+<p>&quot;Patio Bellavista&quot;:
+&quot;Great nightlife and dining.&quot;
+}</p>
+<p>With a little bit of JSON, you can easily create attractive definition
+lists that are readable both by humans <em>and</em> computers!</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    
+      <li>
+        <h3>
+          <a href="/2013/05/15/visualize-json-formated-date">
+            Visualize JSON-formatted Data
+            <small>15 May 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/09/store-analytics-data">
+            Store Analytics Data
+            <small>09 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/11/bootstrap-data-to-a-page">
+            Bootstrap Data to a Page
+            <small>11 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/12/16/send-jsonp-cross-domain-requests">
+            Send JSONP Cross-domain Requests
+            <small>16 Dec 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
