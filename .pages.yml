@@ -1,0 +1,20 @@
+content:
+  - name: posts
+    label: Posts
+    path: _posts
+    type: collection
+    fields:
+      - name: layout
+        type: string
+      - name: title
+        type: string
+      - name: metaDesc
+        type: string
+      - name: summary
+        type: string
+      - name: tags
+        type: select
+      - name: date
+        type: date
+      - name: author
+        type: string
